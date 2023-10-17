@@ -19,15 +19,13 @@ int print_number(int n) {
     }
 
     if (n == 0) {
-        _putchar('0');
-        count++;
-    } else {
+    return count;
+  } else {
         count += print_number_recursive(n);
     }
 
     return count;
 }
-
 int print_number_recursive(int n) {
     int count = 0;
 
