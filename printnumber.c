@@ -38,4 +38,3 @@ int print_number_recursive(int n) {
 
     return count;
 }
-
