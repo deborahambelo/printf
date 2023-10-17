@@ -1,7 +1,5 @@
-#include <stdarg.h>
-#include <stdio.h>
 #include "main.h"
-#include <string.h> 
+
 
 int _printf(const char *format, ...) {
     int count = 0;
@@ -35,21 +33,23 @@ int _printf(const char *format, ...) {
                     }
                     case 'd':
 		    case 'i': {
-                        int num = va_arg(args, int);
+                       int num = va_arg(args, int);
                         
                         if (num % 10 == 0) {
                             _putchar('0');
                             count++;
+                            
                         }
 
                         count += print_number(num);
                         break;
-                    }
+		    }
                     case 'u': {
                         unsigned int num = va_arg(args, unsigned int);
                         count += print_unsigned_number(num);
                         break;
                     }
+                     
                     default: {
     _putchar('%');
     count++;
