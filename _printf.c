@@ -14,21 +14,26 @@ int _printf(const char *format, ...) {
         count++;
       } else {
         switch (*format) {
-          case 'c': {
+
+
+            case 'c': {
             char c = va_arg(args, int);
             _putchar(c);
             count++;
             break;
           }
           case 's': {
-            char *str = va_arg(args, char*);
-            while (*str) {
-              _putchar(*str);
-              count++;
-              str++;
-            }
-            break;
-          }
+  char *str = va_arg(args, char*);
+  if (str == NULL) {
+    str = "(null)";
+  }
+  while (*str) {
+    _putchar(*str);
+    count++;
+    str++;
+  }
+  break;
+}
           case 'd':
           case 'i': {
             int num = va_arg(args, int);
@@ -40,13 +45,15 @@ int _printf(const char *format, ...) {
             }
             break;
           }
-          default: {
-            _putchar('%');
-            count++;
-            _putchar(*format);
-            count++;
-            fprintf(stderr, "Warning: Unknown format specifier '%%%c'\n", *format);
-          }
+         default: {
+  _putchar('%');
+  count++;
+  _putchar(*format);
+  count++;
+  fprintf(stderr, "Warning: Unknown format specifier '%%%c'\n", *format);
+  format++; 
+}
+
         }
       }
     } else {
