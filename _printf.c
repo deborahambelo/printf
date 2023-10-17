@@ -3,7 +3,6 @@
 #include "main.h"
 #include <string.h> 
 
-
 int _printf(const char *format, ...) {
     int count = 0;
     va_list args;
@@ -35,13 +34,14 @@ int _printf(const char *format, ...) {
                         break;
                     }
                     case 'd':
-                    case 'i': {
+		    case 'i': {
                         int num = va_arg(args, int);
-                        if (num < 0) {
-                            _putchar('-');
+                        
+                        if (num % 10 == 0) {
+                            _putchar('0');
                             count++;
-                            num = -num;
                         }
+
                         count += print_number(num);
                         break;
                     }
